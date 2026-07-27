@@ -11,19 +11,21 @@ Aplicación de escritorio para generar, personalizar, exportar y administrar có
 [![.NET](https://img.shields.io/badge/.NET-10.0-512BD4?logo=dotnet&logoColor=white)](https://dotnet.microsoft.com/)
 [![WPF](https://img.shields.io/badge/UI-WPF-0C54C2?logo=windows&logoColor=white)](https://learn.microsoft.com/dotnet/desktop/wpf/)
 [![Arquitectura](https://img.shields.io/badge/arquitectura-MVVM-15C8FF)](docs/ARCHITECTURE.md)
-[![Estado](https://img.shields.io/badge/estado-en%20reconstrucción-A56CFF)](docs/ROADMAP.md)
+[![CI](https://github.com/Jairo0811/QRStudio/actions/workflows/ci.yml/badge.svg)](https://github.com/Jairo0811/QRStudio/actions/workflows/ci.yml)
+[![Versión](https://img.shields.io/badge/versión-v0.1.0-A56CFF)](CHANGELOG.md)
+[![Estado](https://img.shields.io/badge/estado-en%20desarrollo-22C55E)](docs/ROADMAP.md)
 
 </div>
 
 ## Descripción
 
-**QR Studio** es la reconstrucción completa de **GeneradorQR**, una antigua tarea académica desarrollada con Windows Forms y .NET Framework 4.7.1.
+**QR Studio** es una aplicación de escritorio para Windows que permite crear, personalizar, exportar y administrar códigos QR mediante una interfaz moderna construida con WPF y arquitectura MVVM.
 
-El proyecto original permitía convertir un texto en una imagen QR. Esta nueva versión conserva esa idea central, pero la transforma en una aplicación de portafolio con una identidad propia, interfaz moderna, arquitectura modular, MVVM, persistencia local y pruebas automatizadas.
+El proyecto nació a partir de una tarea académica llamada **GeneradorQR**, posteriormente reescrita desde cero con .NET 10, arquitectura modular, persistencia local y pruebas automatizadas.
 
 ## Funcionalidades
 
-### Versión inicial
+### Funcionalidades disponibles
 
 - Generación de códigos QR para texto, sitios web, correo, teléfono y SMS.
 - Personalización de color principal, fondo, escala y zona de seguridad.
@@ -32,9 +34,9 @@ El proyecto original permitía convertir un texto en una imagen QR. Esta nueva v
 - Exportación en formato PNG.
 - Historial local persistente.
 - Reutilización, copia y eliminación de configuraciones guardadas.
-- Interfaz oscura responsive para escritorio.
+- Interfaz oscura adaptable a diferentes tamaños de ventana.
 
-### Próximas versiones
+### En desarrollo
 
 - Lectura de QR desde imagen, cámara o portapapeles.
 - Contenidos Wi-Fi, vCard, ubicación y eventos.
@@ -45,7 +47,7 @@ El proyecto original permitía convertir un texto en una imagen QR. Esta nueva v
 
 Consulta el [roadmap completo](docs/ROADMAP.md).
 
-## Tecnologías
+## Stack tecnológico
 
 ### Lenguaje y plataforma
 
@@ -147,14 +149,12 @@ Este proyecto nació como una **tarea académica**, no como proyecto final, para
 | GeneradorQR original | WinForms, .NET Framework 4.7.1, una sola pantalla |
 | QR Studio | WPF, .NET 10, MVVM, arquitectura modular y pruebas |
 
-La reconstrucción no modifica gradualmente el formulario antiguo. El código anterior permanece recuperable en el historial de Git y la solución actual comienza desde una base limpia.
+La reconstrucción reemplaza por completo la implementación original, manteniendo su historial en Git y estableciendo una base limpia para la evolución del producto.
 
 ## Autor
 
-**Francis Jairo Matías Rosario**<br>
+Desarrollado por **[Jairo Matías](https://github.com/Jairo0811)**  
 Desarrollador de software · República Dominicana
-
-- GitHub: [@Jairo0811](https://github.com/Jairo0811)
 
 ## Licencia
 
