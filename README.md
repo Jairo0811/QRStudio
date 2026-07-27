@@ -2,9 +2,9 @@
 
 <img src="src/QRStudio.Presentation/Assets/qr-studio-branding.png" alt="QR Studio" width="620">
 
-# QR Studio
 
-### Crea · Personaliza · Comparte
+
+###
 
 Aplicación de escritorio para generar, personalizar, exportar y administrar códigos QR.
 
