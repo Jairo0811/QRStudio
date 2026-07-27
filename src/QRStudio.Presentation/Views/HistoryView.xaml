@@ -1,0 +1,186 @@
+<UserControl x:Class="QRStudio.Presentation.Views.HistoryView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <Grid Margin="36,30">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="*" />
+    </Grid.RowDefinitions>
+
+    <Grid>
+      <StackPanel>
+        <TextBlock Text="BIBLIOTECA LOCAL"
+                   Style="{StaticResource EyebrowTextStyle}"
+                   Foreground="{StaticResource PurpleAccentBrush}" />
+        <TextBlock Text="Historial de códigos"
+                   Margin="0,6,0,0"
+                   Style="{StaticResource PageTitleStyle}" />
+        <TextBlock Text="Recupera configuraciones, copia contenidos o elimina elementos."
+                   Margin="0,8,0,0"
+                   Foreground="{StaticResource MutedTextBrush}" />
+      </StackPanel>
+      <Button Width="134"
+              Height="40"
+              HorizontalAlignment="Right"
+              Style="{StaticResource DangerButtonStyle}"
+              Command="{Binding ClearHistoryCommand}"
+              Content="Vaciar historial" />
+    </Grid>
+
+    <Grid Grid.Row="1" Margin="0,26,0,18">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*" />
+        <ColumnDefinition Width="Auto" />
+      </Grid.ColumnDefinitions>
+      <TextBlock VerticalAlignment="Center"
+                 Foreground="{StaticResource SecondaryTextBrush}">
+        <Run Text="{Binding Items.Count}" />
+        <Run Text=" elementos guardados en este equipo" />
+      </TextBlock>
+      <StackPanel Grid.Column="1" Orientation="Horizontal">
+        <Button Width="118"
+                Height="38"
+                Margin="0,0,10,0"
+                Style="{StaticResource SecondaryButtonStyle}"
+                Command="{Binding RestoreCommand}"
+                Content="↗  Reutilizar" />
+        <Button Width="124"
+                Height="38"
+                Margin="0,0,10,0"
+                Style="{StaticResource SecondaryButtonStyle}"
+                Command="{Binding CopyPayloadCommand}"
+                Content="⧉  Copiar valor" />
+        <Button Width="104"
+                Height="38"
+                Style="{StaticResource DangerButtonStyle}"
+                Command="{Binding DeleteSelectedCommand}"
+                Content="Eliminar" />
+      </StackPanel>
+    </Grid>
+
+    <Grid Grid.Row="2">
+      <ListBox ItemsSource="{Binding Items}"
+               SelectedItem="{Binding SelectedItem}"
+               Background="Transparent"
+               BorderThickness="0"
+               ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+        <ListBox.Resources>
+          <Style TargetType="ListBoxItem">
+            <Setter Property="Margin" Value="0,0,0,12" />
+            <Setter Property="Padding" Value="0" />
+            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Template">
+              <Setter.Value>
+                <ControlTemplate TargetType="ListBoxItem">
+                  <Border x:Name="ItemBorder"
+                          Padding="20"
+                          Background="{StaticResource CardBrush}"
+                          BorderBrush="{StaticResource BorderBrush}"
+                          BorderThickness="1"
+                          CornerRadius="14">
+                    <ContentPresenter />
+                  </Border>
+                  <ControlTemplate.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                      <Setter TargetName="ItemBorder" Property="Background" Value="{StaticResource CardHoverBrush}" />
+                    </Trigger>
+                    <Trigger Property="IsSelected" Value="True">
+                      <Setter TargetName="ItemBorder" Property="BorderBrush" Value="{StaticResource CyanAccentBrush}" />
+                      <Setter TargetName="ItemBorder" Property="Background" Value="#122540" />
+                    </Trigger>
+                  </ControlTemplate.Triggers>
+                </ControlTemplate>
+              </Setter.Value>
+            </Setter>
+          </Style>
+        </ListBox.Resources>
+        <ListBox.ItemTemplate>
+          <DataTemplate>
+            <Grid>
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="52" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="180" />
+              </Grid.ColumnDefinitions>
+              <Border Width="42"
+                      Height="42"
+                      CornerRadius="11"
+                      Background="#152A46">
+                <TextBlock Text="⌗"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           FontSize="20"
+                           Foreground="{StaticResource CyanAccentBrush}" />
+              </Border>
+              <StackPanel Grid.Column="1" Margin="4,0,18,0">
+                <StackPanel Orientation="Horizontal">
+                  <TextBlock Text="{Binding Name}"
+                             FontSize="15"
+                             FontWeight="SemiBold" />
+                  <Border Margin="10,0,0,0"
+                          Padding="8,3"
+                          CornerRadius="7"
+                          Background="#252143">
+                    <TextBlock Text="{Binding ContentType, Converter={StaticResource ContentTypeDisplayConverter}}"
+                               FontSize="9"
+                               FontWeight="Bold"
+                               Foreground="{StaticResource PurpleAccentBrush}" />
+                  </Border>
+                </StackPanel>
+                <TextBlock Text="{Binding Payload}"
+                           Margin="0,7,0,0"
+                           TextTrimming="CharacterEllipsis"
+                           Foreground="{StaticResource MutedTextBrush}" />
+              </StackPanel>
+              <StackPanel Grid.Column="2"
+                          VerticalAlignment="Center"
+                          HorizontalAlignment="Right">
+                <TextBlock Text="{Binding CreatedAtUtc, StringFormat={}{0:dd/MM/yyyy · hh:mm tt}}"
+                           HorizontalAlignment="Right"
+                           FontSize="11"
+                           Foreground="{StaticResource SecondaryTextBrush}" />
+                <TextBlock Margin="0,5,0,0"
+                           HorizontalAlignment="Right"
+                           FontSize="10"
+                           Foreground="{StaticResource MutedTextBrush}"
+                           Text="{Binding LastExportedAtUtc, TargetNullValue=Sin exportar, StringFormat={}{0:'Exportado' dd/MM/yyyy}}" />
+              </StackPanel>
+            </Grid>
+          </DataTemplate>
+        </ListBox.ItemTemplate>
+      </ListBox>
+
+      <StackPanel HorizontalAlignment="Center"
+                  VerticalAlignment="Center"
+                  Visibility="{Binding HasItems, Converter={StaticResource InverseBooleanToVisibilityConverter}}">
+        <Border Width="78"
+                Height="78"
+                CornerRadius="22"
+                Background="#111E31">
+          <TextBlock Text="◷"
+                     HorizontalAlignment="Center"
+                     VerticalAlignment="Center"
+                     FontSize="32"
+                     Foreground="{StaticResource PurpleAccentBrush}" />
+        </Border>
+        <TextBlock Text="Tu historial está vacío"
+                   Margin="0,18,0,0"
+                   HorizontalAlignment="Center"
+                   FontSize="17"
+                   FontWeight="SemiBold" />
+        <TextBlock Text="Los códigos que generes aparecerán aquí."
+                   Margin="0,7,0,0"
+                   Foreground="{StaticResource MutedTextBrush}" />
+      </StackPanel>
+
+      <ProgressBar Height="3"
+                   VerticalAlignment="Top"
+                   IsIndeterminate="True"
+                   Foreground="{StaticResource PurpleAccentBrush}"
+                   Visibility="{Binding IsLoading, Converter={StaticResource BooleanToVisibilityConverter}}" />
+    </Grid>
+  </Grid>
+</UserControl>

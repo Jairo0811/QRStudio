@@ -1,0 +1,48 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QRStudio.Domain", "src\QRStudio.Domain\QRStudio.Domain.csproj", "{B9128CE5-7309-4434-90FB-4BDF3B56D468}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QRStudio.Application", "src\QRStudio.Application\QRStudio.Application.csproj", "{B8A172A8-C732-49F4-82EB-A8F49D81A4E9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QRStudio.Infrastructure", "src\QRStudio.Infrastructure\QRStudio.Infrastructure.csproj", "{0E57099A-D302-4EEE-8265-13153CB88398}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QRStudio.Presentation", "src\QRStudio.Presentation\QRStudio.Presentation.csproj", "{A58288BB-F1AF-44BC-85CD-F762224DAB9B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QRStudio.Application.Tests", "tests\QRStudio.Application.Tests\QRStudio.Application.Tests.csproj", "{B23702F5-F087-46AF-A56A-6F803B697480}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QRStudio.Infrastructure.Tests", "tests\QRStudio.Infrastructure.Tests\QRStudio.Infrastructure.Tests.csproj", "{ECA3D390-5A11-42C7-9300-611280017996}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B9128CE5-7309-4434-90FB-4BDF3B56D468}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9128CE5-7309-4434-90FB-4BDF3B56D468}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9128CE5-7309-4434-90FB-4BDF3B56D468}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9128CE5-7309-4434-90FB-4BDF3B56D468}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8A172A8-C732-49F4-82EB-A8F49D81A4E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8A172A8-C732-49F4-82EB-A8F49D81A4E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8A172A8-C732-49F4-82EB-A8F49D81A4E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8A172A8-C732-49F4-82EB-A8F49D81A4E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E57099A-D302-4EEE-8265-13153CB88398}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E57099A-D302-4EEE-8265-13153CB88398}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E57099A-D302-4EEE-8265-13153CB88398}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E57099A-D302-4EEE-8265-13153CB88398}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A58288BB-F1AF-44BC-85CD-F762224DAB9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A58288BB-F1AF-44BC-85CD-F762224DAB9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A58288BB-F1AF-44BC-85CD-F762224DAB9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A58288BB-F1AF-44BC-85CD-F762224DAB9B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B23702F5-F087-46AF-A56A-6F803B697480}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B23702F5-F087-46AF-A56A-6F803B697480}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B23702F5-F087-46AF-A56A-6F803B697480}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B23702F5-F087-46AF-A56A-6F803B697480}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ECA3D390-5A11-42C7-9300-611280017996}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ECA3D390-5A11-42C7-9300-611280017996}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ECA3D390-5A11-42C7-9300-611280017996}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ECA3D390-5A11-42C7-9300-611280017996}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
