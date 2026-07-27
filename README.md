@@ -111,8 +111,8 @@ QRStudio/
 ## Ejecución local
 
 ```bash
-git clone https://github.com/Jairo0811/GeneradorQR.git
-cd GeneradorQR
+git clone https://github.com/Jairo0811/QRStudio.git
+cd QRStudio
 dotnet restore QRStudio.sln
 dotnet build QRStudio.sln
 dotnet run --project src/QRStudio.Presentation
@@ -126,7 +126,21 @@ dotnet test QRStudio.sln --configuration Release
 
 Las pruebas cubren el formateo de contenido, la orquestación del caso de uso, la generación de PNG y la persistencia del historial.
 
-## Origen del proyecto
+## Origen académico
+
+Este proyecto nació como una **tarea académica**, no como proyecto final, para la asignatura **Diseño Centrado en el Usuario (SOF-010)** del Instituto Tecnológico de Las Américas (ITLA).
+
+| Información | Detalle |
+|---|---|
+| 👨‍🎓 Estudiante | Francis Jairo Matías Rosario |
+| 🆔 Matrícula | 2015-2984 |
+| 📖 Asignatura | Diseño Centrado en el Usuario (SOF-010) |
+| 👨‍🏫 Profesor | Juan Martínez López |
+| 🏫 Institución | Instituto Tecnológico de Las Américas (ITLA) |
+| 📅 Período académico | 2018-C1 |
+| 📝 Tipo de entrega | Tarea académica |
+
+## Evolución del proyecto
 
 | Etapa | Implementación |
 |---|---|
