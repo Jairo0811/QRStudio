@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <RootNamespace>QRStudio.Infrastructure</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="QRCoder" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\QRStudio.Application\QRStudio.Application.csproj" />
+    <ProjectReference Include="..\QRStudio.Domain\QRStudio.Domain.csproj" />
+  </ItemGroup>
+</Project>
