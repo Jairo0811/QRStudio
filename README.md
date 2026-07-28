@@ -53,11 +53,21 @@ Consulta el [roadmap completo](docs/ROADMAP.md).
 
 [![My Skills](https://skillicons.dev/icons?i=cs,dotnet,windows)](https://skillicons.dev)
 
+<p>
+  <img src="https://img.shields.io/badge/WPF-512BD4?style=flat-square&logo=dotnet&logoColor=white" alt="WPF" />
+  <img src="https://img.shields.io/badge/MVVM-CommunityToolkit-6C2DC7?style=flat-square&logo=dotnet&logoColor=white" alt="MVVM con CommunityToolkit" />
+</p>
+
 - C# con tipos anulables y analizadores habilitados.
 - .NET 10.
 - Windows Presentation Foundation.
 
 ### Arquitectura y librerías
+
+<p>
+  <img src="https://img.shields.io/badge/CommunityToolkit.Mvvm-512BD4?style=flat-square&logo=dotnet&logoColor=white" alt="CommunityToolkit.Mvvm" />
+  <img src="https://img.shields.io/badge/QRCoder-Generación%20QR-111827?style=flat-square&logo=dotnet&logoColor=white" alt="QRCoder" />
+</p>
 
 - MVVM con CommunityToolkit.Mvvm.
 - Generic Host e inyección de dependencias.
@@ -68,6 +78,11 @@ Consulta el [roadmap completo](docs/ROADMAP.md).
 ### Pruebas y herramientas
 
 [![My Skills](https://skillicons.dev/icons?i=visualstudio,github,git)](https://skillicons.dev)
+
+<p>
+  <img src="https://img.shields.io/badge/xUnit-Pruebas-512BD4?style=flat-square&logo=dotnet&logoColor=white" alt="xUnit" />
+  <img src="https://img.shields.io/badge/GitHub%20Actions-CI-2088FF?style=flat-square&logo=githubactions&logoColor=white" alt="GitHub Actions" />
+</p>
 
 - xUnit.
 - Microsoft.NET.Test.Sdk.
