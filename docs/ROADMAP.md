@@ -1,6 +1,10 @@
-# Roadmap
+# Roadmap cerrado
 
-## MVP — recorrido funcional
+QR Studio no mantiene un roadmap activo.
+
+El proyecto se cerró en **v1.0.0** como versión académica final y queda congelado como archivo de portafolio.
+
+## Alcance completado
 
 - [x] Solución .NET 10 modular.
 - [x] Interfaz WPF con MVVM.
@@ -11,39 +15,23 @@
 - [x] Reutilizar, copiar y eliminar elementos.
 - [x] Pruebas unitarias y de infraestructura.
 - [x] Integración continua.
+- [x] Metadata de versión 1.0.0.
+- [x] Icono de aplicación.
+- [x] Publicación self-contained para Windows x64.
+- [x] Instalador Inno Setup.
+- [x] Licencia MIT.
+- [x] Release notes y automatización de release.
 
-## Versión 1.0 — publicación
+## Elementos retirados del alcance
 
-- [ ] Compilación verificada en Windows con .NET 10.
-- [ ] Pruebas manuales de lectura con Android e iOS.
-- [ ] Capturas finales de la interfaz.
-- [ ] Icono `.ico` multirresolución.
-- [ ] Paquete MSIX o instalador.
-- [ ] Licencia aprobada.
-- [ ] Release y notas de versión.
+Las siguientes ideas se cierran como **no planificadas** porque el repositorio se conservará únicamente como tarea académica:
 
-## Versión 1.1 — contenidos avanzados
+- lector QR desde imagen, portapapeles o cámara;
+- Wi-Fi, vCard, geolocalización y eventos;
+- exportación SVG/PDF;
+- plantillas y favoritos;
+- cuentas, nube, API o base de datos remota.
 
-- [ ] Wi-Fi.
-- [ ] vCard.
-- [ ] Geolocalización.
-- [ ] Evento de calendario.
-- [ ] Exportación SVG y PDF.
-- [ ] Plantillas y favoritos.
+Las pruebas manuales específicas con Android/iOS y las capturas promocionales finales dejan de ser criterios de publicación. No se documentan como realizadas.
 
-## Versión 2.0 — QR Reader
-
-- [ ] Abrir imagen desde disco.
-- [ ] Leer desde portapapeles.
-- [ ] Escanear con cámara.
-- [ ] Historial de lecturas.
-- [ ] Validación y advertencias para enlaces.
-
-## Fuera del alcance actual
-
-- Cuentas de usuario.
-- Sincronización en la nube.
-- API web.
-- Base de datos remota.
-
-Estas funciones solo se incorporarán si existe una necesidad real que justifique su complejidad.
+Consulta [FINAL_STATUS.md](FINAL_STATUS.md) para el estado de cierre.

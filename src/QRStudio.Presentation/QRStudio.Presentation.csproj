@@ -6,6 +6,7 @@
     <UseWPF>true</UseWPF>
     <EnableWindowsTargeting>true</EnableWindowsTargeting>
     <ApplicationManifest>app.manifest</ApplicationManifest>
+    <ApplicationIcon>Assets\qr-studio.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="CommunityToolkit.Mvvm" />
@@ -18,5 +19,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\qr-studio-branding.png" />
+    <Resource Include="Assets\qr-studio.ico" />
   </ItemGroup>
 </Project>

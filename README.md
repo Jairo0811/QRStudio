@@ -2,107 +2,52 @@
 
 <img src="src/QRStudio.Presentation/Assets/qr-studio-branding.png" alt="QR Studio" width="620">
 
-
-
-###
+### QR Studio
 
 Aplicación de escritorio para generar, personalizar, exportar y administrar códigos QR.
 
 [![.NET](https://img.shields.io/badge/.NET-10.0-512BD4?logo=dotnet&logoColor=white)](https://dotnet.microsoft.com/)
 [![WPF](https://img.shields.io/badge/UI-WPF-0C54C2?logo=windows&logoColor=white)](https://learn.microsoft.com/dotnet/desktop/wpf/)
-[![Arquitectura](https://img.shields.io/badge/arquitectura-MVVM-15C8FF)](docs/ARCHITECTURE.md)
 [![CI](https://github.com/Jairo0811/QRStudio/actions/workflows/ci.yml/badge.svg)](https://github.com/Jairo0811/QRStudio/actions/workflows/ci.yml)
-[![Versión](https://img.shields.io/badge/versión-v0.1.0-A56CFF)](CHANGELOG.md)
-[![Estado](https://img.shields.io/badge/estado-en%20desarrollo-22C55E)](docs/ROADMAP.md)
+[![Versión](https://img.shields.io/badge/versión-v1.0.0-A56CFF)](CHANGELOG.md)
+[![Estado](https://img.shields.io/badge/estado-congelado-64748B)](docs/FINAL_STATUS.md)
+[![Licencia](https://img.shields.io/badge/licencia-MIT-22C55E)](LICENSE)
 
 </div>
 
-## Descripción
+## Estado del proyecto
 
-**QR Studio** es una aplicación de escritorio para Windows que permite crear, personalizar, exportar y administrar códigos QR mediante una interfaz moderna construida con WPF y arquitectura MVVM.
+**QR Studio v1.0.0 es la versión académica final.** El proyecto queda congelado como archivo de portafolio y no tiene un roadmap activo de nuevas funcionalidades.
 
-El proyecto nació a partir de una tarea académica llamada **GeneradorQR**, posteriormente reescrita desde cero con .NET 10, arquitectura modular, persistencia local y pruebas automatizadas.
+La versión final conserva un alcance deliberadamente pequeño: crear QR, personalizarlos, exportarlos y mantener un historial local. Ideas anteriores como lector por cámara, Wi-Fi, vCard, geolocalización, SVG/PDF o sincronización se cerraron como **no planificadas** al decidir conservar el repositorio como tarea académica restaurada.
 
-## Funcionalidades
-
-### Funcionalidades disponibles
+## Funcionalidades finales
 
 - Generación de códigos QR para texto, sitios web, correo, teléfono y SMS.
 - Personalización de color principal, fondo, escala y zona de seguridad.
 - Selección del nivel de corrección de errores.
-- Vista previa nítida dentro de la aplicación.
-- Exportación en formato PNG.
-- Historial local persistente.
+- Vista previa dentro de la aplicación.
+- Exportación PNG.
+- Historial local persistente en `%LOCALAPPDATA%\QR Studio\history.json`.
 - Reutilización, copia y eliminación de configuraciones guardadas.
-- Interfaz oscura adaptable a diferentes tamaños de ventana.
+- Interfaz WPF oscura.
+- Icono de aplicación.
+- Build y pruebas automatizadas en Windows mediante GitHub Actions.
+- Distribución portable y mediante instalador para Windows x64.
 
-### En desarrollo
+## Stack
 
-- Lectura de QR desde imagen, cámara o portapapeles.
-- Contenidos Wi-Fi, vCard, ubicación y eventos.
-- Exportación SVG y PDF.
-- Logotipo central con validación de legibilidad.
-- Plantillas y favoritos.
-- Empaquetado MSIX e instalador firmado.
-
-Consulta el [roadmap completo](docs/ROADMAP.md).
-
-## Stack tecnológico
-
-### Lenguaje y plataforma
-
-[![My Skills](https://skillicons.dev/icons?i=cs,dotnet,windows)](https://skillicons.dev)
-
-<p>
-  <img src="https://img.shields.io/badge/WPF-512BD4?style=flat-square&logo=dotnet&logoColor=white" alt="WPF" />
-  <img src="https://img.shields.io/badge/MVVM-CommunityToolkit-6C2DC7?style=flat-square&logo=dotnet&logoColor=white" alt="MVVM con CommunityToolkit" />
-</p>
-
-- C# con tipos anulables y analizadores habilitados.
-- .NET 10.
-- Windows Presentation Foundation.
-
-### Arquitectura y librerías
-
-<p>
-  <img src="https://img.shields.io/badge/CommunityToolkit.Mvvm-512BD4?style=flat-square&logo=dotnet&logoColor=white" alt="CommunityToolkit.Mvvm" />
-  <img src="https://img.shields.io/badge/QRCoder-Generación%20QR-111827?style=flat-square&logo=dotnet&logoColor=white" alt="QRCoder" />
-</p>
-
+- C# / .NET 10.
+- WPF.
 - MVVM con CommunityToolkit.Mvvm.
 - Generic Host e inyección de dependencias.
-- QRCoder para renderizado PNG.
-- Persistencia JSON en `%LOCALAPPDATA%\QR Studio\history.json`.
-- Arquitectura en capas: Domain, Application, Infrastructure y Presentation.
-
-### Pruebas y herramientas
-
-[![My Skills](https://skillicons.dev/icons?i=visualstudio,github,git)](https://skillicons.dev)
-
-<p>
-  <img src="https://img.shields.io/badge/xUnit-Pruebas-512BD4?style=flat-square&logo=dotnet&logoColor=white" alt="xUnit" />
-  <img src="https://img.shields.io/badge/GitHub%20Actions-CI-2088FF?style=flat-square&logo=githubactions&logoColor=white" alt="GitHub Actions" />
-</p>
-
-- xUnit.
-- Microsoft.NET.Test.Sdk.
-- Coverlet Collector.
+- QRCoder.
+- Persistencia JSON local.
+- xUnit + Coverlet.
 - GitHub Actions.
-- Central Package Management.
+- Inno Setup para el instalador.
 
 ## Arquitectura
-
-```mermaid
-flowchart LR
-    UI["Presentation<br>WPF + MVVM"] --> APP["Application<br>casos de uso"]
-    APP --> DOM["Domain<br>modelos y reglas"]
-    INF["Infrastructure<br>QR + JSON + archivos"] --> APP
-    UI --> INF
-```
-
-Las dependencias apuntan hacia el núcleo. La interfaz no conoce detalles de QRCoder ni del formato físico del historial. Consulta [ARCHITECTURE.md](docs/ARCHITECTURE.md) para las decisiones y límites de cada capa.
-
-## Estructura
 
 ```text
 QRStudio/
@@ -114,18 +59,16 @@ QRStudio/
 ├── tests/
 │   ├── QRStudio.Application.Tests/
 │   └── QRStudio.Infrastructure.Tests/
+├── installer/
 ├── docs/
-├── .github/workflows/
-└── QRStudio.sln
+└── .github/workflows/
 ```
 
-## Requisitos
+La solución mantiene las responsabilidades separadas entre Domain, Application, Infrastructure y Presentation. Consulta [ARCHITECTURE.md](docs/ARCHITECTURE.md).
 
-- Windows 10 o Windows 11.
-- [.NET 10 SDK](https://dotnet.microsoft.com/download/dotnet/10.0).
-- Visual Studio con la carga de trabajo **Desarrollo de escritorio de .NET**, o la CLI de .NET.
+## Ejecución desde código
 
-## Ejecución local
+Requiere Windows 10/11 y .NET 10 SDK.
 
 ```bash
 git clone https://github.com/Jairo0811/QRStudio.git
@@ -141,7 +84,14 @@ dotnet run --project src/QRStudio.Presentation
 dotnet test QRStudio.sln --configuration Release
 ```
 
-Las pruebas cubren el formateo de contenido, la orquestación del caso de uso, la generación de PNG y la persistencia del historial.
+## Distribución
+
+La versión final genera dos artefactos para Windows x64:
+
+- `QRStudio-v1.0.0-Setup.exe`: instalador por usuario.
+- `QRStudio-v1.0.0-win-x64-portable.zip`: publicación portable self-contained.
+
+Los artefactos y sus hashes SHA-256 se producen automáticamente con el workflow de release. Consulta [RELEASE_NOTES.md](RELEASE_NOTES.md).
 
 ## Origen académico
 
@@ -149,28 +99,26 @@ Este proyecto nació como una **tarea académica**, no como proyecto final, para
 
 | Información | Detalle |
 |---|---|
-| 👨‍🎓 Estudiante | Francis Jairo Matías Rosario |
-| 🆔 Matrícula | 2015-2984 |
-| 📖 Asignatura | Diseño Centrado en el Usuario (SOF-010) |
-| 👨‍🏫 Profesor | Juan Martínez López |
-| 🏫 Institución | Instituto Tecnológico de Las Américas (ITLA) |
-| 📅 Período académico | 2018-C1 |
-| 📝 Tipo de entrega | Tarea académica |
+| Estudiante | Francis Jairo Matías Rosario |
+| Matrícula | 2015-2984 |
+| Asignatura | Diseño Centrado en el Usuario (SOF-010) |
+| Profesor | Juan Martínez López |
+| Institución | Instituto Tecnológico de Las Américas (ITLA) |
+| Período académico | 2018-C1 |
+| Tipo de entrega | Tarea académica |
 
-## Evolución del proyecto
+## Evolución
 
 | Etapa | Implementación |
 |---|---|
 | GeneradorQR original | WinForms, .NET Framework 4.7.1, una sola pantalla |
-| QR Studio | WPF, .NET 10, MVVM, arquitectura modular y pruebas |
+| QR Studio v0.1 | Reescritura WPF/.NET 10, MVVM, arquitectura modular y pruebas |
+| QR Studio v1.0 | Cierre académico, distribución, metadata, licencia y congelación |
 
-La reconstrucción reemplaza por completo la implementación original, manteniendo su historial en Git y estableciendo una base limpia para la evolución del producto.
+## Mantenimiento
 
-## Autor
-
-Desarrollado por **[Jairo Matías](https://github.com/Jairo0811)**  
-Desarrollador de software · República Dominicana
+No se planifican nuevas características. El repositorio se conserva como referencia académica y de portafolio. Solo tendría sentido reabrirlo ante una corrección crítica que impida compilar o ejecutar la versión final.
 
 ## Licencia
 
-La licencia pública se definirá antes de la primera versión estable.
+MIT. Consulta [LICENSE](LICENSE).
