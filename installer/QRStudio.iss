@@ -25,7 +25,6 @@ DisableProgramGroupPage=yes
 PrivilegesRequired=lowest
 OutputDir={#OutputDir}
 OutputBaseFilename=QRStudio-v{#AppVersion}-Setup
-SetupIconFile=..\src\QRStudio.Presentation\Assets\qr-studio.ico
 UninstallDisplayIcon={app}\{#AppExeName}
 Compression=lzma2
 SolidCompression=yes
