@@ -1,0 +1,105 @@
+name: Package and release
+
+on:
+  pull_request:
+    branches:
+      - master
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  package:
+    name: Package Windows x64
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET 10
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Restore
+        run: dotnet restore QRStudio.sln
+
+      - name: Build
+        run: dotnet build QRStudio.sln --configuration Release --no-restore -p:ContinuousIntegrationBuild=true
+
+      - name: Test
+        run: dotnet test QRStudio.sln --configuration Release --no-build
+
+      - name: Publish self-contained
+        shell: pwsh
+        run: |
+          dotnet publish src/QRStudio.Presentation/QRStudio.Presentation.csproj `
+            --configuration Release `
+            --runtime win-x64 `
+            --self-contained true `
+            -p:PublishSingleFile=true `
+            -p:IncludeNativeLibrariesForSelfExtract=true `
+            -p:DebugType=None `
+            -p:DebugSymbols=false `
+            -o artifacts/publish
+
+      - name: Create portable ZIP
+        shell: pwsh
+        run: |
+          Compress-Archive -Path artifacts/publish/* -DestinationPath artifacts/QRStudio-v1.0.0-win-x64-portable.zip -Force
+
+      - name: Install Inno Setup
+        shell: pwsh
+        run: choco install innosetup --no-progress -y
+
+      - name: Build installer
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force artifacts/dist | Out-Null
+          & "${env:ProgramFiles(x86)}\Inno Setup 6\ISCC.exe" `
+            "/DAppVersion=1.0.0" `
+            "/DPublishDir=$pwd\artifacts\publish" `
+            "/DOutputDir=$pwd\artifacts\dist" `
+            "installer\QRStudio.iss"
+
+      - name: Generate checksums
+        shell: pwsh
+        run: |
+          $files = @(
+            "artifacts\dist\QRStudio-v1.0.0-Setup.exe",
+            "artifacts\QRStudio-v1.0.0-win-x64-portable.zip"
+          )
+          $lines = foreach ($file in $files) {
+            $hash = Get-FileHash $file -Algorithm SHA256
+            "$($hash.Hash.ToLowerInvariant())  $(Split-Path $file -Leaf)"
+          }
+          $lines | Set-Content -Encoding ascii artifacts/SHA256SUMS.txt
+
+      - name: Upload packaged artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: QRStudio-v1.0.0
+          path: |
+            artifacts/dist/QRStudio-v1.0.0-Setup.exe
+            artifacts/QRStudio-v1.0.0-win-x64-portable.zip
+            artifacts/SHA256SUMS.txt
+          if-no-files-found: error
+
+      - name: Publish final GitHub Release
+        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v1.0.0
+          target_commitish: ${{ github.sha }}
+          name: QR Studio v1.0.0 — Final Academic Release
+          body_path: RELEASE_NOTES.md
+          make_latest: true
+          files: |
+            artifacts/dist/QRStudio-v1.0.0-Setup.exe
+            artifacts/QRStudio-v1.0.0-win-x64-portable.zip
+            artifacts/SHA256SUMS.txt
